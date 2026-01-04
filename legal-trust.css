@@ -1,0 +1,36 @@
+/* Legal Compliance & Trust Section */
+
+.legal-trust {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.legal-trust h2 {
+  color: #0a2a43;
+  margin-bottom: 15px;
+}
+
+.legal-trust ul {
+  list-style: none;
+  padding: 0;
+}
+
+.legal-trust ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.legal-trust ul li strong {
+  color: #1c4e80;
+}
+
+.trust-note {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #2a2a2a;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultas de Clientes | HydraulicAirSpin</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+    color:#eaeaea;
+    min-height:100vh;
+    padding:30px 15px;
+}
+
+/* Encabezado */
+.header {
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.header h1 {
+    font-size:2.2rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.header h1 span {
+    color:#c20b0b;
+}
+
+.header p {
+    margin-top:8px;
+    font-size:0.95rem;
+    color:#b5b5b5;
+}
+
+/* Contenedor */
+#records {
+    max-width:900px;
+    margin:0 auto;
+}
+
+/* Tarjeta */
+.record {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:20px 25px;
+    margin-bottom:20px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.record:hover {
+    transform: translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* Texto dentro */
+.record p {
+    margin:6px 0;
+    font-size:0.95rem;
+    line-height:1.4;
+}
+
+.record strong {
+    color:#ffd700;
+    font-weight:600;
+}
+
+/* Fecha */
+.record em {
+    display:block;
+    margin-top:10px;
+    font-size:0.8rem;
+    color:#9a9a9a;
+}
+
+/* Sin registros */
+.no-records {
+    text-align:center;
+    font-size:1.1rem;
+    color:#ccc;
+    padding:40px;
+}
+
+/* Botón Facturas */
+.invoice-btn-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.invoice-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #0071e3, #00c6ff);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.invoice-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+.footer {
+    text-align:center;
+    margin-top:50px;
+    font-size:0.8rem;
+    color:#888;
+}
+
+.footer span {
+    color:#c20b0b;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>Consultas de Clientes <span>Admin</span></h1>
+    <p>HydraulicAirSpin Services Corp</p>
+</div>
+
+<div id="records"></div>
+
+<!-- Botón de acceso a facturas -->
+<div class="invoice-btn-container">
+    <a href="invoice.html" class="invoice-btn">Acceder a Facturas</a>
+</div>
+
+<div class="footer">
+    © 2026 <span>HydraulicAirSpin</span> · Panel Administrativo
+</div>
+
+<script>
+// Leer datos de localStorage y mostrar
+const recordsDiv = document.getElementById("records");
+const records = JSON.parse(localStorage.getItem("clientRequests") || "[]");
+
+if(records.length === 0){
+    recordsDiv.innerHTML = '<div class="no-records">No hay consultas registradas todavía.</div>';
+} else {
+    records.reverse().forEach(r => {
+        const div = document.createElement("div");
+        div.className = "record";
+        div.innerHTML = `
+            <p><strong>Nombre:</strong> ${r.nombre}</p>
+            <p><strong>Email:</strong> ${r.email}</p>
+            <p><strong>Teléfono:</strong> ${r.telefono || '-'}</p>
+            <p><strong>Servicio:</strong> ${r.servicio}</p>
+            <p><strong>Detalles:</strong> ${r.detalles}</p>
+            <em>Fecha: ${r.fecha}</em>
+        `;
+        recordsDiv.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>

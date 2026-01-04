@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice - HydraulicAirSpinCorp</title>
+<link rel="stylesheet" href="invoice.css">
+
+<!-- jsPDF & html2canvas para generar PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="invoice-container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>HydraulicAirSpinCorp</h1>
+    <p>Professional Hydraulic & Air Services</p>
+    <p class="location">Miami, Florida – United States</p>
+  </header>
+
+  <!-- COMPANY INFO -->
+  <section class="company-info">
+    <p><strong>Company:</strong> HydraulicAirSpinCorp</p>
+    <p><strong>Service Type:</strong> Mobile & Industrial Services</p>
+    <p><strong>Invoice Date:</strong> <input type="date"></p>
+    <p><strong>Invoice #:</strong> <input type="text" placeholder="000123"></p>
+  </section>
+
+  <!-- CLIENT INFO -->
+  <section class="client-info">
+    <h2>Client Information</h2>
+    <input type="text" placeholder="Client Full Name">
+    <input type="text" placeholder="Company Name (if applicable)">
+    <input type="text" placeholder="Service Address">
+    <input type="tel" placeholder="Phone Number">
+    <input type="email" placeholder="Email Address">
+  </section>
+
+  <!-- SERVICE DESCRIPTION -->
+  <section class="service-description">
+    <h2>Service Description</h2>
+    <textarea placeholder="Describe the work performed for the client..."></textarea>
+  </section>
+
+  <!-- BILLING DETAILS -->
+  <section class="billing">
+    <h2>Billing Details</h2>
+    <label>Service Amount ($)</label>
+    <input type="number" id="amount" placeholder="0.00">
+
+    <label>Florida Sales Tax (7%)</label>
+    <input type="text" id="tax" readonly>
+
+    <label><strong>Total Amount ($)</strong></label>
+    <input type="text" id="total" readonly>
+  </section>
+
+  <!-- PAYMENT METHOD -->
+  <section class="payment-method">
+    <h2>Payment Method</h2>
+    <select id="payment-type" onchange="updatePaymentStatus()">
+      <option value="" disabled selected>Select Payment Type</option>
+      <option value="paypal">PayPal</option>
+      <option value="credit">Credit Card</option>
+      <option value="debit">Debit Card</option>
+      <option value="zelle">Zelle</option>
+      <option value="check">Check</option>
+    </select>
+    <p id="payment-status"><strong>Payment Status:</strong> Pending</p>
+  </section>
+
+  <!-- SIGNATURE -->
+  <section class="signature">
+    <h2>Client Digital Signature</h2>
+    <canvas id="signature-pad"></canvas>
+    <button onclick="clearSignature()">Clear Signature</button>
+    <button onclick="saveSignature()">Save Signature</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      This invoice represents a legal service transaction under Florida law.
+      Payment confirms acceptance of services rendered by HydraulicAirSpinCorp.
+    </p>
+    <button onclick="calculateTotal()">Calculate Total</button>
+    <button onclick="generatePDF()">Save / Download PDF</button>
+  </footer>
+
+</div>
+
+<script src="invoice.js"></script>
+</body>
+</html>
