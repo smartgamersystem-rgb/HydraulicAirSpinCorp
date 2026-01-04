@@ -28,6 +28,9 @@ body {
 .loader-container {
     text-align:center;
     animation: fadeIn 1.5s ease forwards;
+    padding: 0 10px; /* para que no se salga en móviles */
+    max-width: 400px; /* ancho máximo */
+    width: 90%; /* se adapta a pantalla pequeña */
 }
 
 /* Logo */
@@ -44,7 +47,7 @@ body {
 
 /* Línea decorativa */
 .line {
-    width:120px;
+    width:100%;
     height:4px;
     background:#111;
     margin:20px auto;
@@ -91,6 +94,22 @@ body {
     from { opacity:0; transform:scale(0.95); }
     to { opacity:1; transform:scale(1); }
 }
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 480px) {
+    .loader-logo {
+        font-size:2rem;
+        letter-spacing:1.5px;
+    }
+    .loading-text {
+        font-size:1rem;
+    }
+    .spinner {
+        width:40px;
+        height:40px;
+        border-width:4px;
+    }
+}
 </style>
 
 <script>
@@ -117,10 +136,8 @@ setTimeout(() => {
     <div class="spinner"></div>
 </div>
 
-</body>
 <!-- PROTECCIÓN ANTI COPIA -->
 <style>
-/* Bloquear selección de texto */
 * {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -128,72 +145,39 @@ setTimeout(() => {
     user-select: none;
 }
 
-/* Permitir inputs */
 input, textarea {
     user-select: text !important;
 }
 
-/* Bloquear arrastre */
 img {
     pointer-events: none;
-    <img src="imagen.jpg" style="width: 100%; max-width: 400px; height: auto;">
-
+    max-width: 100%;
+    height: auto;
 }
 </style>
 
 <script>
 // Bloquear clic derecho
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
 // Bloquear teclas comunes
 document.addEventListener('keydown', function(e) {
-
-    // Ctrl + C, V, U, S
-    if (e.ctrlKey && ['c','v','u','s','a'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-        return false;
-    }
-
-    // F12
-    if (e.key === 'F12') {
-        e.preventDefault();
-        return false;
-    }
-
-    // Ctrl + Shift + I / J
-    if (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-        return false;
-    }
+    if (e.ctrlKey && ['c','v','u','s','a'].includes(e.key.toLowerCase())) e.preventDefault();
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) e.preventDefault();
 });
 
-// Detectar DevTools (básico)
+// Detectar DevTools básico
 setInterval(function() {
-    const devtoolsOpen = window.outerWidth - window.innerWidth > 160 ||
-                         window.outerHeight - window.innerHeight > 160;
+    const devtoolsOpen = window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160;
     if (devtoolsOpen) {
-        document.body.innerHTML = `
-            <div style="
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                height:100vh;
-                background:#000;
-                color:#fff;
-                font-family:Arial;
-                text-align:center;
-                font-size:18px;
-            ">
-                ⚠ Acceso restringido<br>
-                Esta acción ha sido bloqueada.
-            </div>
-        `;
+        document.body.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:Arial;text-align:center;font-size:18px;">⚠ Acceso restringido<br>Esta acción ha sido bloqueada.</div>`;
     }
 }, 1000);
 </script>
 
+</body>
 </html>
+
 
 
