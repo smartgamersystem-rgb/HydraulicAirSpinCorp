@@ -14,23 +14,29 @@
     box-sizing:border-box;
 }
 
+/* ================== */
+/* BODY - ADAPTATIVO MÓVIL 💜 */
+/* ================== */
 body {
-    height:100vh;
+    min-height: 100vh; /* 💜 permite que el contenido crezca si es necesario */
     background: linear-gradient(135deg, #FFD700, #FFC300);
     display:flex;
     justify-content:center;
     align-items:center;
     font-family:'Montserrat', sans-serif;
-    overflow:hidden;
+    padding:0;
+    margin:0;
+    overflow-y: auto; /* 💜 permite scroll vertical si se corta */
 }
 
 /* Contenedor central */
 .loader-container {
     text-align:center;
     animation: fadeIn 1.5s ease forwards;
-    padding: 0 10px; /* para que no se salga en móviles */
+    padding: 0 10px; /* 💜 margen horizontal para móviles */
     max-width: 400px; /* ancho máximo */
-    width: 90%; /* se adapta a pantalla pequeña */
+    width: 90%; /* 💜 se adapta al ancho del móvil */
+    margin: 20px auto; /* 💜 espacio superior/inferior */
 }
 
 /* Logo */
@@ -95,7 +101,9 @@ body {
     to { opacity:1; transform:scale(1); }
 }
 
-/* Media Query para pantallas pequeñas */
+/* ================== */
+/* MEDIA QUERY MÓVIL 💜 */
+/* ================== */
 @media (max-width: 480px) {
     .loader-logo {
         font-size:2rem;
@@ -136,7 +144,9 @@ setTimeout(() => {
     <div class="spinner"></div>
 </div>
 
-<!-- PROTECCIÓN ANTI COPIA -->
+<!-- ================== -->
+<!-- PROTECCIÓN ANTI COPIA 💜 -->
+<!-- ================== -->
 <style>
 * {
     -webkit-user-select: none;
@@ -144,11 +154,9 @@ setTimeout(() => {
     -ms-user-select: none;
     user-select: none;
 }
-
 input, textarea {
     user-select: text !important;
 }
-
 img {
     pointer-events: none;
     max-width: 100%;
@@ -178,6 +186,5 @@ setInterval(function() {
 
 </body>
 </html>
-
 
 
