@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-7">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loading | HydraulicAirSpin</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+/* ================== */
+/* RESET GENERAL 💜 */
+/* ================== */
 * {
     margin:0;
     padding:0;
@@ -15,56 +18,71 @@
 }
 
 /* ================== */
-/* BODY - ADAPTATIVO MÓVIL 💜 */
+/* BODY - CENTRADO COMPLETO 💜 */
 /* ================== */
 body {
-    min-height: 90vh; /* 💜 permite que el contenido crezca si es necesario */
-    background: linear-gradient(135deg, #FFD700, #FFC300);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    min-height: 100vh; /* mínimo alto, se adapta al móvil */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family:'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #FFD700, #FFC300);
     padding:0;
     margin:0;
-    overflow-y: auto; /* 💜 permite scroll vertical si se corta */
+    overflow-y: auto; /* permite scroll solo si es necesario */
 }
 
-/* Contenedor central */
+/* ================== */
+/* CONTENEDOR CENTRAL 💜 */
+/* ================== */
 .loader-container {
-    text-align:center;
+    text-align: center;
     animation: fadeIn 1.5s ease forwards;
-    padding: 0 9px; /* 💜 margen horizontal para móviles */
-    max-width: 380px; /* ancho máximo */
-    width: 85%; /* 💜 se adapta al ancho del móvil */
-    margin: 18px auto; /* 💜 espacio superior/inferior */
+    padding: 20px 15px;
+    max-width: 400px;
+    width: 90%;
+    background: rgba(255,255,255,0.05); /* ligera transparencia para dar relieve */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Logo */
+/* ================== */
+/* LOGO 💜 */
+/* ================== */
 .loader-logo {
-    font-size:3rem;
-    font-weight:650;
-    color:#111;
-    letter-spacing:2px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 3px;
+    display: inline-block;
+    position: relative; /* necesario para la línea */
+    padding-bottom: 10px;
 }
 
+/* Línea negra debajo del logo 💜 */
+.loader-logo::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 60%; /* línea proporcional al logo */
+    background: #111;
+    margin: 10px auto 0;
+    border-radius: 3px;
+}
+
+/* Color rojo en "AirSpin" */
 .loader-logo span {
-    color:#C20B0B; /* rojo elegante */
+    color:#C20B0B;
 }
 
-/* Línea decorativa */
-.line {
-    width:90%;
-    height:3px;
-    background:#111;
-    margin:18px auto;
-    border-radius:4px;
-}
-
-/* Texto loading */
+/* ================== */
+/* TEXTO DE CARGA 💜 */
+/* ================== */
 .loading-text {
-    font-size:1.1rem;
+    font-size: 1.1rem;
     color:#333;
     letter-spacing:2px;
+    margin-top: 15px;
 }
 
 /* Puntos animados */
@@ -80,14 +98,16 @@ body {
     100% { content:"..."; }
 }
 
-/* Spinner */
+/* ================== */
+/* SPINNER 💜 */
+/* ================== */
 .spinner {
-    margin:30px auto 0;
-    width:60px;
-    height:60px;
-    border:6px solid rgba(0,0,0,0.2);
-    border-top:6px solid #111;
-    border-radius:50%;
+    margin: 30px auto 0;
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(0,0,0,0.2);
+    border-top: 6px solid #111;
+    border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
@@ -105,17 +125,27 @@ body {
 /* MEDIA QUERY MÓVIL 💜 */
 /* ================== */
 @media (max-width: 480px) {
+    .loader-container {
+        padding: 15px 10px;
+    }
     .loader-logo {
-        font-size:2rem;
-        letter-spacing:1.5px;
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+        padding-bottom: 8px;
+    }
+    .loader-logo::after {
+        width: 70%; /* línea proporcional más ancha en móviles */
+        height: 3px;
     }
     .loading-text {
-        font-size:1rem;
+        font-size: 1rem;
+        margin-top: 12px;
     }
     .spinner {
-        width:35px;
-        height:35px;
-        border-width:3.5px;
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+        margin-top: 20px;
     }
 }
 </style>
@@ -127,15 +157,12 @@ setTimeout(() => {
 }, 4000);
 </script>
 
-</head>
 <body>
 
 <div class="loader-container">
     <div class="loader-logo">
         Hydraulic<span>AirSpin</span>
     </div>
-
-    <div class="line"></div>
 
     <div class="loading-text">
         Loading <span class="dots"></span> wait
@@ -166,19 +193,19 @@ img {
 
 <script>
 // Bloquear clic derecho
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('contextmenu', e => e.preventDefault());
 
 // Bloquear teclas comunes
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && ['c','v','u','s','a'].includes(e.key.toLowerCase())) e.preventDefault();
-    if (e.key === 'F12') e.preventDefault();
-    if (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) e.preventDefault();
+document.addEventListener('keydown', e => {
+    if(e.ctrlKey && ['c','v','u','s','a'].includes(e.key.toLowerCase())) e.preventDefault();
+    if(e.key === 'F12') e.preventDefault();
+    if(e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) e.preventDefault();
 });
 
 // Detectar DevTools básico
-setInterval(function() {
+setInterval(() => {
     const devtoolsOpen = window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160;
-    if (devtoolsOpen) {
+    if(devtoolsOpen){
         document.body.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:Arial;text-align:center;font-size:18px;">⚠ Acceso restringido<br>Esta acción ha sido bloqueada.</div>`;
     }
 }, 1000);
@@ -186,9 +213,5 @@ setInterval(function() {
 
 </body>
 </html>
-
-
-
-
 
 
