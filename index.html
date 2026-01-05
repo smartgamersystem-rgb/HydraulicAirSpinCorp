@@ -8,76 +8,72 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-/* ================== */
 /* RESET GENERAL 💜 */
-/* ================== */
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ================== */
-/* BODY - CENTRADO COMPLETO 💜 */
-/* ================== */
-body {
-    min-height: 100vh; /* mínimo alto, se adapta al móvil */
+/* BODY - CENTRADO 💜 */
+html, body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family:'Montserrat', sans-serif;
     background: linear-gradient(135deg, #FFD700, #FFC300);
-    padding:0;
-    margin:0;
-    overflow-y: auto; /* permite scroll solo si es necesario */
+    overflow-y: auto;
 }
 
-/* ================== */
 /* CONTENEDOR CENTRAL 💜 */
-/* ================== */
 .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    animation: fadeIn 1.5s ease forwards;
     padding: 20px 15px;
-    max-width: 400px;
+    max-width: 600px; /* más grande para PC */
     width: 90%;
-    background: rgba(255,255,255,0.05); /* ligera transparencia para dar relieve */
+    background: rgba(255,255,255,0.05);
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1.5s ease forwards;
 }
 
-/* ================== */
-/* LOGO 💜 */
-/* ================== */
+/* LOGO + LINEA 💜 */
+.loader-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .loader-logo {
     font-size: 3rem;
     font-weight: 700;
     color: #111;
     letter-spacing: 3px;
     display: inline-block;
-    position: relative; /* necesario para la línea */
-    padding-bottom: 10px;
 }
 
-/* Línea negra debajo del logo 💜 */
-.loader-logo::after {
-    content: "";
-    display: block;
+.loader-logo span {
+    color: #C20B0B;
+}
+
+/* Línea negra ajustada al ancho del logo 💜 */
+.logo-line {
+    display: inline-block;
+    width: 100%;
+    max-width: calc(100% - 40px); /* un poco más pequeña que el logo */
     height: 4px;
-    width: 60%; /* línea proporcional al logo */
     background: #111;
-    margin: 10px auto 0;
+    margin-top: 10px;
     border-radius: 3px;
 }
 
-/* Color rojo en "AirSpin" */
-.loader-logo span {
-    color:#C20B0B;
-}
-
-/* ================== */
 /* TEXTO DE CARGA 💜 */
-/* ================== */
 .loading-text {
     font-size: 1.1rem;
     color:#333;
@@ -85,7 +81,6 @@ body {
     margin-top: 15px;
 }
 
-/* Puntos animados */
 .dots::after {
     content:"";
     animation:dots 1.5s infinite;
@@ -98,9 +93,7 @@ body {
     100% { content:"..."; }
 }
 
-/* ================== */
 /* SPINNER 💜 */
-/* ================== */
 .spinner {
     margin: 30px auto 0;
     width: 60px;
@@ -121,9 +114,7 @@ body {
     to { opacity:1; transform:scale(1); }
 }
 
-/* ================== */
 /* MEDIA QUERY MÓVIL 💜 */
-/* ================== */
 @media (max-width: 480px) {
     .loader-container {
         padding: 15px 10px;
@@ -131,10 +122,9 @@ body {
     .loader-logo {
         font-size: 2rem;
         letter-spacing: 1.5px;
-        padding-bottom: 8px;
     }
-    .loader-logo::after {
-        width: 70%; /* línea proporcional más ancha en móviles */
+    .logo-line {
+        width: 70%;
         height: 3px;
     }
     .loading-text {
@@ -148,6 +138,17 @@ body {
         margin-top: 20px;
     }
 }
+
+/* PROTECCIÓN ANTI COPIA 💜 */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input, textarea { user-select: text !important; }
+img { pointer-events: none; max-width: 100%; height: auto; }
+
 </style>
 
 <script>
@@ -160,8 +161,11 @@ setTimeout(() => {
 <body>
 
 <div class="loader-container">
-    <div class="loader-logo">
-        Hydraulic<span>AirSpin</span>
+    <div class="loader-logo-container">
+        <div class="loader-logo">
+            Hydraulic<span>AirSpin</span>
+        </div>
+        <div class="logo-line"></div>
     </div>
 
     <div class="loading-text">
@@ -170,26 +174,6 @@ setTimeout(() => {
 
     <div class="spinner"></div>
 </div>
-
-<!-- ================== -->
-<!-- PROTECCIÓN ANTI COPIA 💜 -->
-<!-- ================== -->
-<style>
-* {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-input, textarea {
-    user-select: text !important;
-}
-img {
-    pointer-events: none;
-    max-width: 100%;
-    height: auto;
-}
-</style>
 
 <script>
 // Bloquear clic derecho
@@ -213,5 +197,4 @@ setInterval(() => {
 
 </body>
 </html>
-
 
