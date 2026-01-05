@@ -1,20 +1,47 @@
-<section class="legal-trust">
+<section class="legal-trust-dynamic">
   <h2>Legal Compliance & Professional Credentials</h2>
-  <p>
-    Our company operates in full compliance with United States regulations and
-    meets the legal, insurance, and safety requirements demanded by commercial,
-    industrial, and corporate clients.
-  </p>
+  
+  <div class="trust-table">
+    <div class="trust-row header">
+      <div class="trust-cell">Aspect</div>
+      <div class="trust-cell">Details</div>
+    </div>
 
-  <ul>
-    <li><strong>Tax Compliance:</strong> Fully registered company with active tax filing and reporting.</li>
-    <li><strong>Business Banking:</strong> Active U.S. business bank account for transparent and secure transactions.</li>
-    <li><strong>General Liability Insurance:</strong> Coverage protecting clients and third parties.</li>
-    <li><strong>Workers’ Compensation Insurance:</strong> Protecting employees and contractors on every job site.</li>
-    <li><strong>Contractor & Union Compliance:</strong> Authorized to work with union and non-union contractors.</li>
-    <li><strong>OSHA Certified:</strong> Compliance with OSHA safety standards and certified workforce.</li>
-    <li><strong>Third-Party Coverage:</strong> Insurance coverage valid for multiple years, ensuring long-term reliability.</li>
-  </ul>
+    <div class="trust-row">
+      <div class="trust-cell">Tax Compliance</div>
+      <div class="trust-cell">Fully registered company with active tax filing and reporting.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">Business Banking</div>
+      <div class="trust-cell">Active U.S. business bank account for transparent and secure transactions.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">General Liability Insurance</div>
+      <div class="trust-cell">Coverage protecting clients and third parties.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">Workers’ Compensation</div>
+      <div class="trust-cell">Protecting employees and contractors on every job site.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">Contractor & Union Compliance</div>
+      <div class="trust-cell">Authorized to work with union and non-union contractors.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">OSHA Certified</div>
+      <div class="trust-cell">Compliance with OSHA safety standards and certified workforce.</div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-cell">Third-Party Coverage</div>
+      <div class="trust-cell">Insurance coverage valid for multiple years, ensuring long-term reliability.</div>
+    </div>
+  </div>
 
   <p class="trust-note">
     Our structure allows us to work with demanding companies that require strict
@@ -22,3 +49,91 @@
     We prioritize professionalism, transparency, and long-term partnerships.
   </p>
 </section>
+
+<style>
+/* Contenedor general */
+.legal-trust-dynamic {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 15px 20px;
+    background: rgba(245,245,245,0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Título */
+.legal-trust-dynamic h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #4B0082; /* morado */
+    margin-bottom: 15px;
+}
+
+/* Tabla dinámica */
+.trust-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.trust-row {
+    display: table-row;
+    border-bottom: 1px solid #ccc;
+}
+
+.trust-row.header {
+    background: #4B0082;
+    color: #fff;
+    font-weight: 700;
+}
+
+.trust-cell {
+    display: table-cell;
+    padding: 10px 8px;
+    font-size: 0.85rem;
+    vertical-align: top;
+}
+
+.trust-row:nth-child(even):not(.header) {
+    background: rgba(75,0,130,0.05); /* morado muy claro */
+}
+
+/* Nota inferior */
+.trust-note {
+    font-size: 0.8rem;
+    color: #333;
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 600px) {
+    .trust-table, .trust-row, .trust-cell {
+        display: block;
+        width: 100%;
+    }
+    .trust-row {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #aaa;
+        background: rgba(75,0,130,0.05);
+        padding: 8px 0;
+    }
+    .trust-row.header { display: none; }
+    .trust-cell {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+    }
+    .trust-cell::before {
+        font-weight: 700;
+        color: #4B0082;
+        margin-right: 5px;
+    }
+    .trust-row .trust-cell:first-child::before { content: "Aspect:"; }
+    .trust-row .trust-cell:last-child::before { content: "Details:"; }
+}
+</style>
