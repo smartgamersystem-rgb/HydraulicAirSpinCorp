@@ -32,42 +32,35 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    width: 90%;
-    max-width: 600px;
-    padding: 20px 15px;
+    width: 100%;
+    padding: 0 15px;
 }
 
-/* LOGO + LINEA */
-.loader-logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
+/* LOGO + LINEA (alineado exacto con el texto) */
 .loader-logo {
     font-size: 3rem;
     font-weight: 700;
     color: #111;
     letter-spacing: 3px;
     display: inline-block;
+    position: relative;
 }
 
+/* span rojo */
 .loader-logo span {
     color: #C20B0B;
 }
 
-/* Línea negra centrada */
-.logo-line {
+/* Línea negra justo debajo del texto, misma longitud que logo */
+.loader-logo::after {
+    content: "";
     display: block;
-    width: 80%;
-    max-width: 350px;
     height: 4px;
     background: #111;
     margin-top: 10px;
     border-radius: 3px;
+    width: 100%;
 }
 
 /* TEXTO DE CARGA */
@@ -105,20 +98,13 @@ html, body {
     to { transform: rotate(360deg); }
 }
 
-/* Fade entrada */
-@keyframes fadeIn {
-    from { opacity:0; transform: scale(0.95); }
-    to { opacity:1; transform: scale(1); }
-}
-
 /* MEDIA QUERY MÓVIL */
 @media (max-width: 480px) {
     .loader-logo {
         font-size: 2rem;
         letter-spacing: 1.5px;
     }
-    .logo-line {
-        width: 70%;
+    .loader-logo::after {
         height: 3px;
     }
     .loading-text {
@@ -152,21 +138,11 @@ setTimeout(() => {
 }, 4000);
 </script>
 
-</head>
 <body>
 
 <div class="loader-container">
-    <div class="loader-logo-container">
-        <div class="loader-logo">
-            Hydraulic<span>AirSpin</span>
-        </div>
-        <div class="logo-line"></div>
-    </div>
-
-    <div class="loading-text">
-        Loading <span class="dots"></span> wait
-    </div>
-
+    <div class="loader-logo">Hydraulic<span>AirSpin</span></div>
+    <div class="loading-text">Loading <span class="dots"></span> wait</div>
     <div class="spinner"></div>
 </div>
 
@@ -192,3 +168,4 @@ setInterval(() => {
 
 </body>
 </html>
+
