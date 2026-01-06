@@ -6,74 +6,44 @@
 <title>HydraulicAirSpin Services Corp</title>
 <style>
 /* ===================== */
-/* RESPONSIVE MÓVIL - MORADO */
-/* ===================== */
-@media (max-width: 768px) {
-    body {
-        font-size: 0.95rem; /* Ajusta tamaño general en móvil */
-    }
-
-    header img {
-        width: 200px; /* Logo más pequeño */
-        height: auto;
-    }
-
-    .services {
-        padding: 20px;
-        gap: 15px;
-    }
-
-    .service-card {
-        padding: 15px 10px;
-    }
-
-    .service-card h3 { font-size: 1.1em; }
-    .service-card p { font-size: 0.9em; }
-
-    .contact {
-        padding: 20px 15px;
-        max-width: 90%; /* se adapta al ancho móvil */
-        margin: 20px auto;
-    }
-
-    .contact h2 { font-size: 1.3em; }
-    .contact input, .contact textarea, .contact select, .contact button {
-        font-size: 0.95em;
-        padding: 10px 8px;
-    }
-
-    .ssl-notice {
-        padding: 12px 16px;
-        font-size: 0.9em;
-        max-width: 90%;
-    }
-
-    .legal-trust {
-        padding: 15px 20px;
-        font-size: 0.9em;
-        max-width: 90%;
-    }
-}
-
-    
-/* Fuentes elegantes para el logo */
+/* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Condensed:wght@700&family=Playfair+Display:wght@700&display=swap');
 
-body {
-    margin:0; padding:0;
+* { margin:0; padding:0; box-sizing:border-box; }
+body { 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color:#1d1d1f;
     background: url('fondo5.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* Header original */
-header {
-    text-align:center;
-    padding:40px 20px 20px 20px;
-}
+/* HEADER */
+header { text-align:center; padding:40px 20px 20px 20px; }
+header img { width:300px; height:auto; }
 
-/* Servicios */
+/* INTRO EMPRESA */
+.intro { text-align:center; margin:20px 0; }
+.logo-main { font-family: 'Montserrat', sans-serif; font-size:2em; font-weight:700; color:#C20B0B; display:block; letter-spacing:2px; }
+.logo-sub { font-family: 'Roboto Condensed', sans-serif; font-size:1.6em; font-weight:700; color:#1D1D1F; display:block; letter-spacing:1px; }
+.logo-tagline { font-family: 'Playfair Display', serif; font-size:1em; color:#333; margin-top:5px; letter-spacing:1px; }
+
+/* BOTONES PRINCIPALES */
+.buttons-main { text-align:center; margin:20px 0; display:flex; justify-content:center; gap:15px; }
+.buttons-main button, .buttons-main a {
+    padding:12px 25px;
+    font-size:1rem;
+    font-weight:700;
+    border-radius:50px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    color:#fff;
+    background:#C20B0B;
+    transition: all 0.3s ease;
+}
+.buttons-main button:hover, .buttons-main a:hover { background:#FF4500; transform:scale(1.05); }
+
+/* SERVICIOS */
 .services {
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
@@ -83,7 +53,7 @@ header {
     margin:0 auto;
 }
 .service-card {
-    background: rgba(255,255,255,0.9); /* semi-transparente para ver fondo */
+    background: rgba(255,255,255,0.9);
     padding:20px 15px;
     border-radius:12px;
     box-shadow:0 5px 20px rgba(0,0,0,0.05);
@@ -94,65 +64,62 @@ header {
 .service-card h3 { margin-bottom:10px; font-weight:600; font-size:1.2em; }
 .service-card p { font-size:0.95em; color:#555; }
 
-/* Cuadro de contacto */
-.contact {
-    background: rgba(255,255,255,0.4);
-    padding:40px 20px;
-    max-width:600px;
-    margin:40px auto;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    backdrop-filter: blur(8px);
+/* BOTÓN CONTACTO FLOTANTE */
+.contact-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background:#C20B0B;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    padding:15px 25px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    z-index:1000;
+    transition:all 0.3s ease;
+}
+.contact-btn:hover { background:#FF4500; transform:scale(1.05); }
+
+/* MODAL CONTACTO */
+#contactModal {
+    display:none;
+    position: fixed;
+    z-index: 2000;
+    left:0; top:0;
+    width:100%; height:100%;
+    overflow:auto;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background: rgba(255,255,255,0.95);
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 650px;
     position: relative;
 }
-
-/* Logo dentro del cuadro de contacto */
-.contact .logo-container {
-    text-align:center;
-    margin-bottom:20px;
-}
-.contact .logo-main {
-    font-family: 'Montserrat', sans-serif;
-    font-size:2em;
-    font-weight:700;
-    color:#C20B0B;
-    display:block;
-    letter-spacing:2px;
-}
-.contact .logo-sub {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size:1.6em;
-    font-weight:700;
-    color:#1D1D1F;
-    display:block;
-    letter-spacing:1px;
-}
-.contact .logo-tagline {
-    font-family: 'Playfair Display', serif;
-    font-size:1em;
+.close-btn {
+    position:absolute;
+    top:15px; right:20px;
+    font-size:1.5rem;
+    font-weight:bold;
     color:#333;
-    margin-top:5px;
-    letter-spacing:1px;
+    cursor:pointer;
 }
-
-/* Reloj dentro del cuadro */
-#reloj {
-    font-size:16px;
-    color:#666;
-    margin-top:10px;
-}
-
-/* Formulario contacto */
-.contact h2 { text-align:center; margin-bottom:20px; }
-.contact form { display:flex; flex-direction:column; gap:15px; }
-.contact input, .contact textarea, .contact select, .contact button {
+.modal-content h2 { text-align:center; margin-bottom:20px; }
+.modal-content form { display:flex; flex-direction:column; gap:15px; }
+.modal-content input, .modal-content textarea, .modal-content select, .modal-content button {
     padding:11px 8px;
     font-size:1em;
     border:1px solid #ccc;
     border-radius:8px;
     width:100%;
 }
-.contact button {
+.modal-content button {
     background:#0071e3;
     color:white;
     font-weight:600;
@@ -160,7 +127,9 @@ header {
     cursor:pointer;
     transition:background 0.2s ease;
 }
-.contact button:hover { background:#f1f3f5; color:#0071e3; }
+.modal-content button:hover { background:#f1f3f5; color:#0071e3; }
+
+/* ADMIN BUTTON */
 .admin-btn {
     background-color:#e1e4e6;
     color:white;
@@ -168,68 +137,42 @@ header {
     border:none;
     cursor:pointer;
     padding:12px 15px;
-    margin-top:15px;
+    margin-top:10px;
     border-radius:8px;
     transition:background 0.2s ease;
 }
 .admin-btn:hover { background-color:#adb2b6; }
 
-/* Estilos para subida de imagen */
-.upload-box {
-    text-align:center; 
-    margin:20px 0;
-}
-.upload-box input[type="file"], .upload-box button {
-    padding:12px; 
-    border-radius:10px; 
-    border:none; 
-    font-size:1rem;
-}
+/* UPLOAD BOX */
+.upload-box { text-align:center; margin:10px 0; }
+.upload-box input[type="file"], .upload-box button { padding:10px; border-radius:8px; border:none; font-size:0.95rem; }
 .upload-box input[type="file"] { background: rgba(0,0,0,0.05); color:#333; }
-.upload-box button { background:#c8cbce; color:white; cursor:pointer; font-weight:bold; margin-top:10px; }
+.upload-box button { background:#c8cbce; color:white; cursor:pointer; font-weight:bold; margin-top:5px; }
 .upload-box button:hover { background:#e0e3e6; }
 
-/* Footer */
+/* FOOTER COMPLETO CON POLICY */
 footer { 
     text-align:center; 
     padding:20px; 
     font-size:0.9em; 
-    color:#777; 
-    background: rgba(0,0,0,0.05);
+    color:#f1f1f1; 
+    background: rgba(0,0,0,0.2);
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing:1px;
 }
-
-/* Botón Policy */
-.policy-btn-container {
-    text-align: center;
-    margin-top: 8px;
-}
-.policy-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 0.85em;
-    color: #ffffff;
-    background: #0071e3;
-    border-radius: 6px;
-    text-decoration: none;
+footer a.policy-btn {
+    display:inline-block;
+    padding:6px 12px;
+    font-size:0.85em;
+    color:#ffffff;
+    background:#0071e3;
+    border-radius:6px;
+    text-decoration:none;
     transition: background 0.2s ease;
+    margin-top:6px;
 }
-.policy-btn:hover { background: #005bb5; }
+footer a.policy-btn:hover { background:#005bb5; }
 
-/* Sección Legal Compliance */
-.legal-trust {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px 25px;
-    background: rgba(255,255,255,0.8);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.legal-trust h2 { font-size:1.5em; text-align:center; margin-bottom:15px; }
-.legal-trust p, .legal-trust li { font-size:0.95em; line-height:1.5em; color:#333; }
-.legal-trust ul { margin-left:20px; margin-bottom:10px; }
-.legal-trust .trust-note { font-style: italic; text-align:center; margin-top:10px; color:#555; }
-
-/* SSL notice */
 .ssl-notice {
     display: flex;
     align-items: center;
@@ -249,132 +192,126 @@ footer {
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.ssl-notice:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-}
+.ssl-notice:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
 .ssl-icon { font-size: 1.5em; }
 .ssl-text { line-height: 1.4em; }
 .ssl-text strong { color: #00e0ff; font-weight:600; }
 .ssl-text a { color: #00ffd5; font-weight:600; text-decoration:none; transition: color 0.2s ease; }
 .ssl-text a:hover { color: #00a1b0; }
 
-/* PROTECCIÓN ANTI COPIA */
-* { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-input, textarea { user-select: text !important; }
-img { pointer-events: none; }
-    <img src="imagen.jpg" style="width: 100%; max-width: 400px; height: auto;">
-
+@media(max-width:768px){
+    body { font-size:0.95rem; }
+    header img { width:200px; height:auto; }
+    .services { padding:20px; gap:15px; }
+    .service-card { padding:15px 10px; }
+    .service-card h3 { font-size:1.1em; }
+    .service-card p { font-size:0.9em; }
+}
 </style>
 </head>
 <body>
 
 <header>
-    <img src="logo77.jpg" alt="Logo Principal" style="width:300px; height:auto;">
+    <img src="logo77.jpg" alt="Logo Principal">
 </header>
+
+<div class="intro">
+    <span class="logo-main">Services Corp</span>
+    <span class="logo-sub">HydraulicAirSpin</span>
+    <span class="logo-tagline">Excelencia en soluciones hidráulicas</span>
+</div>
+
+<div class="buttons-main">
+    <a href="services.html">Servicios</a>
+    <button id="orderBtn">Ordenar Servicio</button>
+</div>
 
 <section class="services">
     <div class="service-card">
-        <img src="1.jpg" alt="Válvula Hidráulica" style="width:100%; border-radius:10px; margin-bottom:10px;">
+        <img src="1.jpg" alt="Válvula Hidráulica">
         <h3>Válvula Hidráulica</h3>
         <p>Control y regulación de flujo para sistemas hidráulicos.</p>
     </div>
     <div class="service-card">
-        <img src="2.jpg" alt="Pistón Hidráulico" style="width:100%; border-radius:10px; margin-bottom:10px;">
+        <img src="2.jpg" alt="Pistón Hidráulico">
         <h3>Pistón Hidráulico</h3>
         <p>Pistones de alta resistencia para maquinaria industrial.</p>
     </div>
     <div class="service-card">
-        <img src="3.jpg" alt="Manguera Hidráulica" style="width:100%; border-radius:10px; margin-bottom:10px;">
+        <img src="3.jpg" alt="Manguera Hidráulica">
         <h3>Manguera Hidráulica</h3>
         <p>Mangueras de alta presión para sistemas hidráulicos.</p>
     </div>
     <div class="service-card">
-        <img src="4.jpg" alt="Repuestos" style="width:100%; border-radius:10px; margin-bottom:10px;">
+        <img src="4.jpg" alt="Repuestos">
         <h3>Repuestos Industriales</h3>
         <p>Amplio inventario de repuestos industriales y domésticos.</p>
     </div>
 </section>
 
-<!-- Sección Legal Compliance -->
-<section class="legal-trust">
-  <h2>Legal Compliance & Professional Credentials</h2>
-  <p>
-    Our company operates in full compliance with United States regulations and
-    meets the legal, insurance, and safety requirements demanded by commercial,
-    industrial, and corporate clients.
-  </p>
-  <ul>
-    <li><strong>Tax Compliance:</strong> Fully registered company with active tax filing and reporting.</li>
-    <li><strong>Business Banking:</strong> Active U.S. business bank account for transparent and secure transactions.</li>
-    <li><strong>General Liability Insurance:</strong> Coverage protecting clients and third parties.</li>
-    <li><strong>Workers’ Compensation Insurance:</strong> Protecting employees and contractors on every job site.</li>
-    <li><strong>Contractor & Union Compliance:</strong> Authorized to work with union and non-union contractors.</li>
-    <li><strong>OSHA Certified:</strong> Compliance with OSHA safety standards and certified workforce.</li>
-    <li><strong>Third-Party Coverage:</strong> Insurance coverage valid for multiple years, ensuring long-term reliability.</li>
-  </ul>
-  <p class="trust-note">
-    Our structure allows us to work with demanding companies that require strict
-    legal documentation, insurance verification, and safety compliance.
-    We prioritize professionalism, transparency, and long-term partnerships.
-  </p>
-</section>
-
-<section class="contact">
-    <div class="logo-container">
-        <span class="logo-main">Services Corp</span>
-        <span class="logo-sub">HydraulicAirSpin</span>
-        <span class="logo-tagline">Excelencia en soluciones hidráulicas</span>
-        <div id="reloj"></div>
-    </div>
-
-    <h2>Contáctanos</h2>
-    <form id="contactForm">
-        <input type="text" name="name" placeholder="Nombre completo" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="tel" name="phone" placeholder="Teléfono" value="">
-        <input type="text" name="partNumber" placeholder="Número de parte o modelo del equipo">
-        <select name="service" required>
-            <option value="">Seleccione el servicio</option>
-            <option value="lavadora">Reparación de Lavadora</option>
-            <option value="secadora">Reparación de Secadora</option>
-            <option value="manguera">Mangueras Hidráulicas</option>
-            <option value="repuestos">Venta de Repuestos</option>
-            <option value="mecanica">Reparación Mecánica General</option>
-        </select>
-        <textarea name="details" rows="5" placeholder="Explique qué necesita" required></textarea>
-
-        <div class="upload-box">
-            <input type="file" id="imageUpload" accept="image/*" multiple>
-            <br>
-            <button type="button" id="btnUpload">Subir Imagen para más detalles al servidor</button>
-        </div>
-
-        <button type="submit">Enviar Solicitud</button>
-    </form>
-
-    <button class="admin-btn" id="adminBtn">Consultas Admin</button>
-</section>
-
 <footer>
-    
-    <div class="policy-btn-container">
-        <a href="services.html" class="policy-btn">Policy</a>
-    </div>
+    &copy; 2026 HydraulicAirSpin Services Corp. Todos los derechos reservados.
+    <br>Contáctanos: <a href="tel:7862693733">786-269-3733</a>
+    <br><a href="policy.html" class="policy-btn">Policy</a>
 </footer>
 
 <div class="ssl-notice">
     <span class="ssl-icon">🔒</span>
-    <span class="ssl-text">
-        Este sitio está protegido con cifrado <strong>SSL (https)</strong> y conexión segura.  
-        &copy; 2026 HydraulicAirSpin Services Corp. Todos los derechos reservados.
-        <br>
-        Contáctanos: <a href="tel:7862693733">786-269-3733</a>
-    </span>
+    <span class="ssl-text">Este sitio está protegido con cifrado <strong>SSL (https)</strong> y conexión segura.</span>
+</div>
+
+<button class="contact-btn" id="openModalBtn">Contáctenos</button>
+
+<!-- MODAL CONTACTO -->
+<div id="contactModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModalBtn">&times;</span>
+        <div class="logo-container">
+            <span class="logo-main">Services Corp</span>
+            <span class="logo-sub">HydraulicAirSpin</span>
+            <span class="logo-tagline">Excelencia en soluciones hidráulicas</span>
+            <div id="reloj"></div>
+        </div>
+
+        <h2>Contáctanos</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="tel" name="phone" placeholder="Teléfono">
+            <input type="text" name="partNumber" placeholder="Número de parte o modelo del equipo">
+            <select name="service" required>
+                <option value="">Seleccione el servicio</option>
+                <option value="lavadora">Reparación de Lavadora</option>
+                <option value="secadora">Reparación de Secadora</option>
+                <option value="manguera">Mangueras Hidráulicas</option>
+                <option value="repuestos">Venta de Repuestos</option>
+                <option value="mecanica">Reparación Mecánica General</option>
+            </select>
+            <textarea name="details" rows="5" placeholder="Explique qué necesita" required></textarea>
+
+            <div class="upload-box">
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+                <br>
+                <button type="button" id="btnUpload" disabled>Subir Imagen</button>
+            </div>
+
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+
+        <button class="admin-btn" id="adminBtn">Consultas Admin</button>
+    </div>
 </div>
 
 <script>
-// Reloj digital con fecha
+// Modal contacto
+const modal = document.getElementById('contactModal');
+const openBtn = document.getElementById('openModalBtn');
+const closeBtn = document.getElementById('closeModalBtn');
+openBtn.onclick = ()=> modal.style.display = 'block';
+closeBtn.onclick = ()=> modal.style.display = 'none';
+window.onclick = e => { if(e.target==modal) modal.style.display='none'; };
+
+// Reloj
 function updateClock() {
     const now = new Date();
     const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
@@ -385,7 +322,7 @@ function updateClock() {
 setInterval(updateClock,1000);
 updateClock();
 
-// Guardar solicitudes en localStorage
+// Formulario localStorage
 document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
     let records = JSON.parse(localStorage.getItem("clientRequests") || "[]");
@@ -404,34 +341,32 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     this.reset();
 });
 
-// Botón admin con contraseña
+// Admin
 document.getElementById("adminBtn").addEventListener("click", function(){
     const user = prompt("Usuario:");
     const pass = prompt("Contraseña:");
-    if(user === "Ultraman" && pass === "Caperuza 2026"){
-        window.location.href = "datos.html";
-    } else {
-        alert("Usuario o contraseña incorrectos");
-    }
+    if(user==="Ultraman" && pass==="Caperuza 2026"){
+        window.location.href="datos.html";
+    } else { alert("Usuario o contraseña incorrectos"); }
 });
 
-// Subida de imágenes
+// Subida imágenes
 const imageUpload = document.getElementById('imageUpload');
 const btnUpload = document.getElementById('btnUpload');
 btnUpload.disabled = true;
 imageUpload.addEventListener('change', ()=> btnUpload.disabled = !imageUpload.files.length);
 const scriptURL = "https://script.google.com/macros/s/AKfycbwGqbpLsOWmc5SasWeywLvFiWpBjAYps8i3bxRiZ-aLD31J3_ChF4JLVJTwOag_e3C0/exec";
-btnUpload.addEventListener('click', async () => {
-    const files = imageUpload.files;
+btnUpload.addEventListener('click', async ()=>{
+    const files=imageUpload.files;
     if(!files.length) return;
     for(let file of files){
-        const reader = new FileReader();
-        reader.onload = async (e)=>{
-            const base64Data = e.target.result.split(",")[1];
+        const reader=new FileReader();
+        reader.onload=async (e)=>{
+            const base64Data=e.target.result.split(",")[1];
             const form = new FormData();
-            form.append("file", base64Data);
-            form.append("name", file.name);
-            form.append("type", file.type);
+            form.append("file",base64Data);
+            form.append("name",file.name);
+            form.append("type",file.type);
             try{
                 const res = await fetch(scriptURL,{method:"POST",body:form});
                 const data = await res.json();
@@ -444,41 +379,15 @@ btnUpload.addEventListener('click', async () => {
     imageUpload.value=""; btnUpload.disabled=true;
 });
 
-// Bloquear clic derecho y teclas comunes
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-    if(e.ctrlKey && ['c','v','u','s','a'].includes(e.key.toLowerCase())) e.preventDefault();
-    if(e.key==='F12') e.preventDefault();
-    if(e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) e.preventDefault();
+// Botón Ordenar Servicio
+document.getElementById("orderBtn").addEventListener("click", function(){
+    alert("Función de ordenar servicio activada!");
 });
-
-// Detectar DevTools (básico)
-setInterval(function() {
-    const devtoolsOpen = window.outerWidth - window.innerWidth > 160 ||
-                         window.outerHeight - window.innerHeight > 160;
-    if(devtoolsOpen){
-        document.body.innerHTML = `
-            <div style="
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                height:100vh;
-                background:#000;
-                color:#fff;
-                font-family:Arial;
-                text-align:center;
-                font-size:18px;
-            ">
-                ⚠ Acceso restringido<br>
-                Esta acción ha sido bloqueada.
-            </div>
-        `;
-    }
-}, 1000);
 </script>
 
 </body>
 </html>
+
 
 
 
