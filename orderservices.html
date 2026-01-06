@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Service | HydraulicAirSpin</title>
+<style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #FFD700, #FFC300);
+    margin:0;
+}
+.form-container {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 450px;
+}
+.form-container h2 {
+    text-align:center;
+    margin-bottom: 20px;
+    color: #111;
+}
+.form-container form {
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+.form-container input,
+.form-container textarea,
+.form-container select,
+.form-container button {
+    padding:12px 10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:1rem;
+    width:100%;
+}
+.form-container button {
+    background:#C20B0B;
+    color:#fff;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+.form-container button:hover {
+    background:#FF4500;
+}
+
+/* Upload button */
+.upload-box {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+}
+.upload-box input[type="file"] {
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+.upload-box button {
+    padding:12px;
+    background:#0071e3;
+    color:#fff;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+.upload-box button:hover { background:#005bb5; }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Order Service</h2>
+    <form id="orderForm">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="tel" name="phone" placeholder="Phone Number">
+        <input type="text" name="partNumber" placeholder="Part Number / Model">
+        <select name="service" required>
+            <option value="">Select Service</option>
+            <option value="washing">Washing Machine Repair</option>
+            <option value="dryer">Dryer Repair</option>
+            <option value="hose">Hydraulic Hoses</option>
+            <option value="parts">Parts Sales</option>
+            <option value="mechanical">General Mechanical Repair</option>
+        </select>
+        <textarea name="details" rows="4" placeholder="Describe your requirements" required></textarea>
+
+        <div class="upload-box">
+            <input type="file" id="imageUpload" accept="image/*" multiple>
+            <button type="button" id="btnUpload" disabled>Upload Images</button>
+        </div>
+
+        <button type="submit">Submit Order</button>
+    </form>
+</div>
+
+<script>
+// URL del Google Script que procesa las imágenes
+const scriptURL = "https://script.google.com/macros/s/AKfycbwGqbpLsOWmc5SasWeywLvFiWpBjAYps8i3bxRiZ-aLD31J3_ChF4JLVJTwOag_e3C0/exec";
+
+const imageUpload = document.getElementById('imageUpload');
+const btnUpload = document.getElementById('btnUpload');
+
+// Activar botón solo si hay archivos
+imageUpload.addEventListener('change', ()=> btnUpload.disabled = !imageUpload.files.length);
+
+// Subir imágenes al servidor
+btnUpload.addEventListener('click', async () => {
+    const files = imageUpload.files;
+    if(!files.length) return;
+    for(let file of files){
+        const reader = new FileReader();
+        reader.onload = async (e)=>{
+            const base64Data = e.target.result.split(",")[1];
+            const form = new FormData();
+            form.append("file", base64Data);
+            form.append("name", file.name);
+            form.append("type", file.type);
+            try{
+                const res = await fetch(scriptURL, {method:"POST", body:form});
+                const data = await res.json();
+                if(data.status==="ok"){ 
+                    alert("Image uploaded successfully ✔"); 
+                } else { 
+                    alert("Error: "+data.message); 
+                }
+            } catch(err){ alert("Error: "+err); }
+        };
+        reader.readAsDataURL(file);
+    }
+    imageUpload.value="";
+    btnUpload.disabled=true;
+});
+
+// Guardar solicitud en localStorage
+document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    let records = JSON.parse(localStorage.getItem('orders') || '[]');
+    const newOrder = {
+        name: this.name.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        partNumber: this.partNumber.value,
+        service: this.service.value,
+        details: this.details.value,
+        date: new Date().toLocaleString()
+    };
+    records.push(newOrder);
+    localStorage.setItem('orders', JSON.stringify(records));
+    alert("Order submitted successfully!");
+    this.reset();
+});
+</script>
+</body>
+</html>
