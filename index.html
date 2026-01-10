@@ -8,13 +8,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-/* BODY con imagen de fondo y overlay */
+* {margin:0; padding:0; box-sizing:border-box;}
 body {
     min-height:100vh;
     font-family:'Montserrat', sans-serif;
@@ -25,194 +19,87 @@ body {
     background: url('A_promotional_composite_digital_photograph_for_HYD.png') no-repeat center center;
     background-size: cover;
 }
-
-/* Overlay oscuro para legibilidad */
 body::before {
     content: "";
     position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top:0; left:0;
+    width:100%; height:100%;
     background-color: rgba(0,0,0,0.55);
     z-index:1;
 }
-
-/* Contenedor principal */
 .main-container {
     background: rgba(255,255,255,0.95);
-    padding:40px;
+    padding:clamp(20px,5vw,40px);
     max-width:900px;
     width:95%;
     border-radius:15px;
     box-shadow:0 15px 40px rgba(0,0,0,0.2);
     text-align:center;
     position: relative;
-    z-index: 2;
+    z-index:2;
 }
-
-/* Logo */
 .logo {
-    font-size:2.5rem;
+    font-size:clamp(1.5rem,5vw,2.5rem);
     color:#111;
     margin-bottom:10px;
 }
-.logo span {
-    color:#C20B0B;
-}
-
-/* Frase soporte móvil */
+.logo span { color:#C20B0B; display:block; font-size:clamp(1rem,4vw,1.8rem);}
 .mobile-support {
-    font-size:2.5rem;
+    font-size:clamp(1.5rem,5vw,2.5rem);
     font-weight:900;
     text-align:center;
     color:#fff;
-    margin:20px 0 40px 0;
+    margin:clamp(10px,3vw,30px) 0;
     letter-spacing:2px;
     animation: glow 1.5s ease-in-out infinite alternate;
 }
 .mobile-support .mobile {
     color:#C20B0B;
-    text-shadow:
-        0 0 5px #C20B0B,
-        0 0 10px #C20B0B,
-        0 0 20px #FFD700,
-        0 0 30px #FFD700,
-        0 0 40px #FFD700;
+    text-shadow:0 0 5px #C20B0B,0 0 10px #C20B0B,0 0 20px #FFD700,0 0 30px #FFD700,0 0 40px #FFD700;
 }
 @keyframes glow {
     0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
     50% { text-shadow: 0 0 10px #fff, 0 0 20px #FFD700; }
     100% { text-shadow: 0 0 15px #fff, 0 0 30px #FFD700; }
 }
-
-/* Servicios */
 .services {
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap:30px;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap:clamp(15px,3vw,30px);
 }
-
 .service-box {
     border:2px solid #111;
     border-radius:15px;
-    padding:25px;
+    padding:clamp(15px,3vw,25px);
     text-align:left;
     background-color: rgba(255,255,255,0.95);
 }
+.service-box h3 { text-align:center; margin-bottom:15px; color:#111; font-size:clamp(1.2rem,3vw,1.8rem);}
+.service-box ul { margin-left:15px; margin-bottom:15px; }
+.service-box li { font-size:clamp(0.8rem,2.5vw,0.95rem); margin-bottom:6px; }
+.clients { font-size:clamp(0.7rem,2vw,0.85rem); color:#333; margin-bottom:15px;}
+.btn { display:block; text-align:center; padding:clamp(8px,2vw,12px); background:#111; color:#FFD700; text-decoration:none; border-radius:8px; transition:0.3s; margin-top:10px; font-size:clamp(0.8rem,2vw,0.95rem);}
+.btn:hover { background:#C20B0B; color:#fff; }
+#translateBtn { position:absolute; top:clamp(10px,3vw,20px); right:clamp(10px,3vw,20px); padding:clamp(6px,2vw,12px) clamp(12px,3vw,20px); background:#C20B0B; color:#fff; border:none; border-radius:8px; cursor:pointer; z-index:3; font-weight:bold; transition:0.3s;}
+#translateBtn:hover { background:#FFD700; color:#111; }
 
-.service-box h3 {
-    text-align:center;
-    margin-bottom:15px;
-    color:#111;
-}
-
-.service-box ul {
-    margin-left:20px;
-    margin-bottom:15px;
-}
-
-.service-box li {
-    font-size:0.9rem;
-    margin-bottom:6px;
-}
-
-.clients {
-    font-size:0.85rem;
-    color:#333;
-    margin-bottom:15px;
-}
-
-.btn {
-    display:block;
-    text-align:center;
-    padding:12px;
-    background:#111;
-    color:#FFD700;
-    text-decoration:none;
-    border-radius:8px;
-    transition:0.3s;
-    margin-top:10px;
-}
-
-.btn:hover {
-    background:#C20B0B;
-    color:#fff;
-}
-
-/* Botón de traducción */
-#translateBtn {
-    position:absolute;
-    top:20px;
-    right:20px;
-    padding:10px 20px;
-    background:#C20B0B;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    z-index: 3;
-    font-weight:bold;
-    transition:0.3s;
-}
-#translateBtn:hover {
-    background:#FFD700;
-    color:#111;
-}
-
-/* Ajustes responsivos para móvil */
+/* MÓVIL: una sola columna */
 @media (max-width: 600px) {
-    .logo {
-        font-size: 1.8rem; 
-        text-align: center; 
-        line-height: 1.2; 
-    }
-    .logo span {
-        display: block; 
-        font-size: 1.5rem; 
-        margin-top: 4px;
-    }
-
-    .mobile-support {
-        font-size: 1.8rem; 
-        margin: 15px 0 30px 0;
-    }
-
-    .services {
-        gap: 20px;
-    }
-
-    .service-box {
-        padding: 20px;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
+    .services { grid-template-columns:1fr; }
+    .main-container { padding:clamp(20px,5vw,30px);}
 }
 </style>
 </head>
 <body>
 
-<!-- Botón de traducción -->
 <button id="translateBtn">ENGLISH</button>
 
 <div class="main-container">
-
     <div class="logo">HYDRAULICAIRSPIN <span>SERVICES CORP</span></div>
-
-    <!-- FRASE MOBILE -->
-    <div class="mobile-support" id="mobileSupport">
-        Solicitar <span class="mobile">Soporte Móvil</span>
-    </div>
-
+    <div class="mobile-support" id="mobileSupport">Solicitar <span class="mobile">Soporte Móvil</span></div>
     <div class="services">
-
-        <!-- SERVICIO MECÁNICA Y CAMIONES -->
         <div class="service-box" id="service1">
             <h3>Mecánica & Servicios para Camiones y Equipos Hidráulicos</h3>
-
             <ul>
                 <li>Mecánica general de camiones</li>
                 <li>Instalación y reemplazo de terminales hidráulicos</li>
@@ -225,7 +112,6 @@ body::before {
                 <li>Mantenimiento de compactadoras/prensas de cartón</li>
                 <li>Servicios completos para flotas de camiones</li>
             </ul>
-
             <div class="clients" id="clients1">
                 <strong>Clientes frecuentes:</strong><br>
                 • Hoteles con equipos hidráulicos internos<br>
@@ -235,14 +121,10 @@ body::before {
                 • Flotas comerciales<br>
                 • Centros de construcción e industria ligera
             </div>
-
             <a href="mecanica.html" class="btn" id="btn1">Ir a Mecánica & Camiones</a>
         </div>
-
-        <!-- SERVICIO LAUNDRY & HOTELS/RESTAURANTES -->
         <div class="service-box" id="service2">
             <h3>Mantenimiento Laundry & Hoteles / Restaurantes</h3>
-
             <ul>
                 <li>Reparación de secadoras (Dryers) industriales</li>
                 <li>Reparación de lavadoras industriales</li>
@@ -255,7 +137,6 @@ body::before {
                 <li>Reparación de hornos, cocinas y planchas industriales</li>
                 <li>Reparación y mantenimiento de exofán y aire acondicionado</li>
             </ul>
-
             <div class="clients" id="clients2">
                 <strong>Clientes frecuentes:</strong><br>
                 • Hoteles (Miami Downtown, Brickell, Coconut Grove)<br>
@@ -265,50 +146,24 @@ body::before {
                 • Edificios residenciales con laundry común<br>
                 • Centros de convenciones y gimnasios con equipos laundry
             </div>
-
             <a href="laundry.html" class="btn" id="btn2">Ir a Laundry & Mantenimiento</a>
         </div>
-
     </div>
-
 </div>
 
 <script>
 // Traducción Español/Inglés
 const translateBtn = document.getElementById('translateBtn');
 let isEnglish = false;
-
 const texts = {
     es: {
         mobileSupport: 'Solicitar <span class="mobile">Soporte Móvil</span>',
         service1Title: 'Mecánica & Servicios para Camiones y Equipos Hidráulicos',
-        service1List: [
-            'Mecánica general de camiones',
-            'Instalación y reemplazo de terminales hidráulicos',
-            'Cambio y reparación de mangueras hidráulicas',
-            'Cambio de válvulas y pistones hidráulicos',
-            'Reparación de motores',
-            'Diagnóstico de vehículos y camiones',
-            'Reparación de arranque',
-            'Chequeo de baterías de camión',
-            'Mantenimiento de compactadoras/prensas de cartón',
-            'Servicios completos para flotas de camiones'
-        ],
+        service1List: ['Mecánica general de camiones','Instalación y reemplazo de terminales hidráulicos','Cambio y reparación de mangueras hidráulicas','Cambio de válvulas y pistones hidráulicos','Reparación de motores','Diagnóstico de vehículos y camiones','Reparación de arranque','Chequeo de baterías de camión','Mantenimiento de compactadoras/prensas de cartón','Servicios completos para flotas de camiones'],
         clients1: '• Hoteles con equipos hidráulicos internos<br>• Restaurantes con sistemas industriales<br>• Departamentos municipales y privados con prensas/compactadoras<br>• Empresas de transporte<br>• Flotas comerciales<br>• Centros de construcción e industria ligera',
         btn1: 'Ir a Mecánica & Camiones',
         service2Title: 'Mantenimiento Laundry & Hoteles / Restaurantes',
-        service2List: [
-            'Reparación de secadoras (Dryers) industriales',
-            'Reparación de lavadoras industriales',
-            'Mantenimiento preventivo de laundry',
-            'Cambio de partes y componentes',
-            'Diagnóstico de fallas y optimización de rendimiento',
-            'Reparación de freidoras',
-            'Cambio de sensores y pilotos en cocinas',
-            'Instalación y mantenimiento de mangueras de gas',
-            'Reparación de hornos, cocinas y planchas industriales',
-            'Reparación y mantenimiento de exofán y aire acondicionado'
-        ],
+        service2List: ['Reparación de secadoras (Dryers) industriales','Reparación de lavadoras industriales','Mantenimiento preventivo de laundry','Cambio de partes y componentes','Diagnóstico de fallas y optimización de rendimiento','Reparación de freidoras','Cambio de sensores y pilotos en cocinas','Instalación y mantenimiento de mangueras de gas','Reparación de hornos, cocinas y planchas industriales','Reparación y mantenimiento de exofán y aire acondicionado'],
         clients2: '• Hoteles (Miami Downtown, Brickell, Coconut Grove)<br>• Restaurantes con cocina industrial<br>• Hospitales y clínicas con lavandería interna<br>• Lavanderías comerciales<br>• Edificios residenciales con laundry común<br>• Centros de convenciones y gimnasios con equipos laundry',
         btn2: 'Ir a Laundry & Mantenimiento',
         translateBtn: 'ENGLISH'
@@ -316,103 +171,37 @@ const texts = {
     en: {
         mobileSupport: 'Request <span class="mobile">MOBILE</span> Support',
         service1Title: 'Mechanics & Services for Trucks and Hydraulic Equipment',
-        service1List: [
-            'General truck mechanics',
-            'Installation and replacement of hydraulic terminals',
-            'Hydraulic hose replacement and repair',
-            'Valve and piston replacement',
-            'Engine repair',
-            'Vehicle and truck diagnostics',
-            'Starter repair',
-            'Truck battery check',
-            'Maintenance of compactors/cardboard presses',
-            'Complete services for truck fleets'
-        ],
+        service1List: ['General truck mechanics','Installation and replacement of hydraulic terminals','Hydraulic hose replacement and repair','Valve and piston replacement','Engine repair','Vehicle and truck diagnostics','Starter repair','Truck battery check','Maintenance of compactors/cardboard presses','Complete services for truck fleets'],
         clients1: '• Hotels with internal hydraulic equipment<br>• Restaurants with industrial systems<br>• Municipal and private departments with presses/compactors<br>• Transport companies<br>• Commercial fleets<br>• Construction centers and light industry',
         btn1: 'Go to Mechanics & Trucks',
         service2Title: 'Laundry & Hotel/Restaurant Maintenance',
-        service2List: [
-            'Industrial dryer repair',
-            'Industrial washing machine repair',
-            'Preventive laundry maintenance',
-            'Parts and components replacement',
-            'Fault diagnosis and performance optimization',
-            'Fryer repair',
-            'Sensor and pilot replacement in kitchens',
-            'Installation and maintenance of gas hoses',
-            'Oven, stove, and industrial griddle repair',
-            'Exhaust fan and air conditioning maintenance and repair'
-        ],
+        service2List: ['Industrial dryer repair','Industrial washing machine repair','Preventive laundry maintenance','Parts and components replacement','Fault diagnosis and performance optimization','Fryer repair','Sensor and pilot replacement in kitchens','Installation and maintenance of gas hoses','Oven, stove, and industrial griddle repair','Exhaust fan and air conditioning maintenance and repair'],
         clients2: '• Hotels (Miami Downtown, Brickell, Coconut Grove)<br>• Restaurants with industrial kitchens<br>• Hospitals and clinics with internal laundry<br>• Commercial laundries<br>• Residential buildings with shared laundry<br>• Convention centers and gyms with laundry equipment',
         btn2: 'Go to Laundry & Maintenance',
         translateBtn: 'ESPAÑOL'
     }
 };
-
-translateBtn.addEventListener('click', () => {
-    isEnglish = !isEnglish;
-    const lang = isEnglish ? 'en' : 'es';
-
+translateBtn.addEventListener('click',()=>{
+    isEnglish=!isEnglish;
+    const lang = isEnglish ? 'en':'es';
     document.getElementById('mobileSupport').innerHTML = texts[lang].mobileSupport;
-
-    const service1 = document.getElementById('service1');
-    service1.querySelector('h3').innerText = texts[lang].service1Title;
-    const ul1 = service1.querySelector('ul');
-    ul1.innerHTML = texts[lang].service1List.map(item => `<li>${item}</li>`).join('');
+    const s1 = document.getElementById('service1');
+    s1.querySelector('h3').innerText = texts[lang].service1Title;
+    s1.querySelector('ul').innerHTML = texts[lang].service1List.map(i=>`<li>${i}</li>`).join('');
     document.getElementById('clients1').innerHTML = texts[lang].clients1;
     document.getElementById('btn1').innerText = texts[lang].btn1;
-
-    const service2 = document.getElementById('service2');
-    service2.querySelector('h3').innerText = texts[lang].service2Title;
-    const ul2 = service2.querySelector('ul');
-    ul2.innerHTML = texts[lang].service2List.map(item => `<li>${item}</li>`).join('');
+    const s2 = document.getElementById('service2');
+    s2.querySelector('h3').innerText = texts[lang].service2Title;
+    s2.querySelector('ul').innerHTML = texts[lang].service2List.map(i=>`<li>${i}</li>`).join('');
     document.getElementById('clients2').innerHTML = texts[lang].clients2;
     document.getElementById('btn2').innerText = texts[lang].btn2;
-
     translateBtn.innerText = texts[lang].translateBtn;
 });
-
 // Protección contra copia
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && ['c','x','s'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-        alert('La copia de contenido está deshabilitada en esta página.');
-    }
-});
+document.addEventListener('selectstart', e=>e.preventDefault());
+document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&['c','x','s'].includes(e.key.toLowerCase())){e.preventDefault();alert('La copia de contenido está deshabilitada en esta página.');}});
 </script>
-/* Ajustes responsivos para móvil */
-@media (max-width: 600px) {
-    .logo {
-        font-size: 1.8rem; /* Reduce tamaño del logo */
-        text-align: center; /* Centra el texto */
-        line-height: 1.2; /* Ajusta altura de línea para que no se corte */
-    }
-    .logo span {
-        display: block; /* Pone "SERVICES CORP" debajo de HYDRAULICAIRSPIN */
-        font-size: 1.5rem; /* Tamaño más pequeño para la segunda línea */
-        margin-top: 4px;
-    }
-
-    .mobile-support {
-        font-size: 1.8rem; /* Ajusta frase de soporte móvil */
-        margin: 15px 0 30px 0;
-    }
-
-    .services {
-        gap: 20px;
-    }
-
-    .service-box {
-        padding: 20px;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
-}
 
 </body>
 </html>
