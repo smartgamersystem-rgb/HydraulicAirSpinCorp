@@ -159,6 +159,38 @@ body::before {
     background:#FFD700;
     color:#111;
 }
+
+/* Ajustes responsivos para móvil */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.8rem; 
+        text-align: center; 
+        line-height: 1.2; 
+    }
+    .logo span {
+        display: block; 
+        font-size: 1.5rem; 
+        margin-top: 4px;
+    }
+
+    .mobile-support {
+        font-size: 1.8rem; 
+        margin: 15px 0 30px 0;
+    }
+
+    .services {
+        gap: 20px;
+    }
+
+    .service-box {
+        padding: 20px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
 </style>
 </head>
 <body>
@@ -204,7 +236,7 @@ body::before {
                 • Centros de construcción e industria ligera
             </div>
 
-            <a href="loading.html" class="btn" id="btn1">Ir a Mecánica & Camiones</a>
+            <a href="mecanica.html" class="btn" id="btn1">Ir a Mecánica & Camiones</a>
         </div>
 
         <!-- SERVICIO LAUNDRY & HOTELS/RESTAURANTES -->
@@ -234,7 +266,7 @@ body::before {
                 • Centros de convenciones y gimnasios con equipos laundry
             </div>
 
-            <a href="loading.html" class="btn" id="btn2">Ir a Laundry & Mantenimiento</a>
+            <a href="laundry.html" class="btn" id="btn2">Ir a Laundry & Mantenimiento</a>
         </div>
 
     </div>
@@ -242,6 +274,7 @@ body::before {
 </div>
 
 <script>
+// Traducción Español/Inglés
 const translateBtn = document.getElementById('translateBtn');
 let isEnglish = false;
 
@@ -338,28 +371,48 @@ translateBtn.addEventListener('click', () => {
 
     translateBtn.innerText = texts[lang].translateBtn;
 });
-</script>
-<script>
-// Evitar selección de texto
-document.addEventListener('selectstart', function(e) {
-    e.preventDefault();
-});
 
-// Evitar clic derecho
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-
-// Evitar copiar con Ctrl+C, Ctrl+X, Ctrl+S
-document.addEventListener('keydown', function(e) {
-    // Ctrl o Cmd en Mac
-    if ((e.ctrlKey || e.metaKey) && 
-        (e.key === 'c' || e.key === 'x' || e.key === 's')) {
+// Protección contra copia
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && ['c','x','s'].includes(e.key.toLowerCase())) {
         e.preventDefault();
         alert('La copia de contenido está deshabilitada en esta página.');
     }
 });
 </script>
+/* Ajustes responsivos para móvil */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.8rem; /* Reduce tamaño del logo */
+        text-align: center; /* Centra el texto */
+        line-height: 1.2; /* Ajusta altura de línea para que no se corte */
+    }
+    .logo span {
+        display: block; /* Pone "SERVICES CORP" debajo de HYDRAULICAIRSPIN */
+        font-size: 1.5rem; /* Tamaño más pequeño para la segunda línea */
+        margin-top: 4px;
+    }
+
+    .mobile-support {
+        font-size: 1.8rem; /* Ajusta frase de soporte móvil */
+        margin: 15px 0 30px 0;
+    }
+
+    .services {
+        gap: 20px;
+    }
+
+    .service-box {
+        padding: 20px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
 
 </body>
 </html>
