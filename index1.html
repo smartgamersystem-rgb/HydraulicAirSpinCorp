@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYDRAULICAIRSPIN SERVICES CORP | Mobile Support</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY con imagen de fondo y overlay */
+body {
+    min-height:100vh;
+    font-family:'Montserrat', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+    background: url('A_promotional_composite_digital_photograph_for_HYD.png') no-repeat center center;
+    background-size: cover;
+}
+
+/* Overlay oscuro para legibilidad */
+body::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.55);
+    z-index:1;
+}
+
+/* Contenedor principal */
+.main-container {
+    background: rgba(255,255,255,0.95);
+    padding:40px;
+    max-width:900px;
+    width:95%;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    text-align:center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo */
+.logo {
+    font-size:2.5rem;
+    color:#111;
+    margin-bottom:10px;
+}
+.logo span {
+    color:#C20B0B;
+}
+
+/* Frase soporte móvil */
+.mobile-support {
+    font-size:2.5rem;
+    font-weight:900;
+    text-align:center;
+    color:#fff;
+    margin:20px 0 40px 0;
+    letter-spacing:2px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+.mobile-support .mobile {
+    color:#C20B0B;
+    text-shadow:
+        0 0 5px #C20B0B,
+        0 0 10px #C20B0B,
+        0 0 20px #FFD700,
+        0 0 30px #FFD700,
+        0 0 40px #FFD700;
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
+    50% { text-shadow: 0 0 10px #fff, 0 0 20px #FFD700; }
+    100% { text-shadow: 0 0 15px #fff, 0 0 30px #FFD700; }
+}
+
+/* Servicios */
+.services {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:30px;
+}
+
+.service-box {
+    border:2px solid #111;
+    border-radius:15px;
+    padding:25px;
+    text-align:left;
+    background-color: rgba(255,255,255,0.95);
+}
+
+.service-box h3 {
+    text-align:center;
+    margin-bottom:15px;
+    color:#111;
+}
+
+.service-box ul {
+    margin-left:20px;
+    margin-bottom:15px;
+}
+
+.service-box li {
+    font-size:0.9rem;
+    margin-bottom:6px;
+}
+
+.clients {
+    font-size:0.85rem;
+    color:#333;
+    margin-bottom:15px;
+}
+
+.btn {
+    display:block;
+    text-align:center;
+    padding:12px;
+    background:#111;
+    color:#FFD700;
+    text-decoration:none;
+    border-radius:8px;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+.btn:hover {
+    background:#C20B0B;
+    color:#fff;
+}
+
+/* Botón de traducción */
+#translateBtn {
+    position:absolute;
+    top:20px;
+    right:20px;
+    padding:10px 20px;
+    background:#C20B0B;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    z-index: 3;
+    font-weight:bold;
+    transition:0.3s;
+}
+#translateBtn:hover {
+    background:#FFD700;
+    color:#111;
+}
+</style>
+</head>
+<body>
+
+<!-- Botón de traducción -->
+<button id="translateBtn">ENGLISH</button>
+
+<div class="main-container">
+
+    <div class="logo">HYDRAULICAIRSPIN <span>SERVICES CORP</span></div>
+
+    <!-- FRASE MOBILE -->
+    <div class="mobile-support" id="mobileSupport">
+        Solicitar <span class="mobile">Soporte Móvil</span>
+    </div>
+
+    <div class="services">
+
+        <!-- SERVICIO MECÁNICA Y CAMIONES -->
+        <div class="service-box" id="service1">
+            <h3>Mecánica & Servicios para Camiones y Equipos Hidráulicos</h3>
+
+            <ul>
+                <li>Mecánica general de camiones</li>
+                <li>Instalación y reemplazo de terminales hidráulicos</li>
+                <li>Cambio y reparación de mangueras hidráulicas</li>
+                <li>Cambio de válvulas y pistones hidráulicos</li>
+                <li>Reparación de motores</li>
+                <li>Diagnóstico de vehículos y camiones</li>
+                <li>Reparación de arranque</li>
+                <li>Chequeo de baterías de camión</li>
+                <li>Mantenimiento de compactadoras/prensas de cartón</li>
+                <li>Servicios completos para flotas de camiones</li>
+            </ul>
+
+            <div class="clients" id="clients1">
+                <strong>Clientes frecuentes:</strong><br>
+                • Hoteles con equipos hidráulicos internos<br>
+                • Restaurantes con sistemas industriales<br>
+                • Departamentos municipales y privados con prensas/compactadoras<br>
+                • Empresas de transporte<br>
+                • Flotas comerciales<br>
+                • Centros de construcción e industria ligera
+            </div>
+
+            <a href="mecanica.html" class="btn" id="btn1">Ir a Mecánica & Camiones</a>
+        </div>
+
+        <!-- SERVICIO LAUNDRY & HOTELS/RESTAURANTES -->
+        <div class="service-box" id="service2">
+            <h3>Mantenimiento Laundry & Hoteles / Restaurantes</h3>
+
+            <ul>
+                <li>Reparación de secadoras (Dryers) industriales</li>
+                <li>Reparación de lavadoras industriales</li>
+                <li>Mantenimiento preventivo de laundry</li>
+                <li>Cambio de partes y componentes</li>
+                <li>Diagnóstico de fallas y optimización de rendimiento</li>
+                <li>Reparación de freidoras</li>
+                <li>Cambio de sensores y pilotos en cocinas</li>
+                <li>Instalación y mantenimiento de mangueras de gas</li>
+                <li>Reparación de hornos, cocinas y planchas industriales</li>
+                <li>Reparación y mantenimiento de exofán y aire acondicionado</li>
+            </ul>
+
+            <div class="clients" id="clients2">
+                <strong>Clientes frecuentes:</strong><br>
+                • Hoteles (Miami Downtown, Brickell, Coconut Grove)<br>
+                • Restaurantes con cocina industrial<br>
+                • Hospitales y clínicas con lavandería interna<br>
+                • Lavanderías comerciales<br>
+                • Edificios residenciales con laundry común<br>
+                • Centros de convenciones y gimnasios con equipos laundry
+            </div>
+
+            <a href="loading.html" class="btn" id="btn2">Ir a Laundry & Mantenimiento</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const translateBtn = document.getElementById('translateBtn');
+let isEnglish = false;
+
+const texts = {
+    es: {
+        mobileSupport: 'Solicitar <span class="mobile">Soporte Móvil</span>',
+        service1Title: 'Mecánica & Servicios para Camiones y Equipos Hidráulicos',
+        service1List: [
+            'Mecánica general de camiones',
+            'Instalación y reemplazo de terminales hidráulicos',
+            'Cambio y reparación de mangueras hidráulicas',
+            'Cambio de válvulas y pistones hidráulicos',
+            'Reparación de motores',
+            'Diagnóstico de vehículos y camiones',
+            'Reparación de arranque',
+            'Chequeo de baterías de camión',
+            'Mantenimiento de compactadoras/prensas de cartón',
+            'Servicios completos para flotas de camiones'
+        ],
+        clients1: '• Hoteles con equipos hidráulicos internos<br>• Restaurantes con sistemas industriales<br>• Departamentos municipales y privados con prensas/compactadoras<br>• Empresas de transporte<br>• Flotas comerciales<br>• Centros de construcción e industria ligera',
+        btn1: 'Ir a Mecánica & Camiones',
+        service2Title: 'Mantenimiento Laundry & Hoteles / Restaurantes',
+        service2List: [
+            'Reparación de secadoras (Dryers) industriales',
+            'Reparación de lavadoras industriales',
+            'Mantenimiento preventivo de laundry',
+            'Cambio de partes y componentes',
+            'Diagnóstico de fallas y optimización de rendimiento',
+            'Reparación de freidoras',
+            'Cambio de sensores y pilotos en cocinas',
+            'Instalación y mantenimiento de mangueras de gas',
+            'Reparación de hornos, cocinas y planchas industriales',
+            'Reparación y mantenimiento de exofán y aire acondicionado'
+        ],
+        clients2: '• Hoteles (Miami Downtown, Brickell, Coconut Grove)<br>• Restaurantes con cocina industrial<br>• Hospitales y clínicas con lavandería interna<br>• Lavanderías comerciales<br>• Edificios residenciales con laundry común<br>• Centros de convenciones y gimnasios con equipos laundry',
+        btn2: 'Ir a Laundry & Mantenimiento',
+        translateBtn: 'ENGLISH'
+    },
+    en: {
+        mobileSupport: 'Request <span class="mobile">MOBILE</span> Support',
+        service1Title: 'Mechanics & Services for Trucks and Hydraulic Equipment',
+        service1List: [
+            'General truck mechanics',
+            'Installation and replacement of hydraulic terminals',
+            'Hydraulic hose replacement and repair',
+            'Valve and piston replacement',
+            'Engine repair',
+            'Vehicle and truck diagnostics',
+            'Starter repair',
+            'Truck battery check',
+            'Maintenance of compactors/cardboard presses',
+            'Complete services for truck fleets'
+        ],
+        clients1: '• Hotels with internal hydraulic equipment<br>• Restaurants with industrial systems<br>• Municipal and private departments with presses/compactors<br>• Transport companies<br>• Commercial fleets<br>• Construction centers and light industry',
+        btn1: 'Go to Mechanics & Trucks',
+        service2Title: 'Laundry & Hotel/Restaurant Maintenance',
+        service2List: [
+            'Industrial dryer repair',
+            'Industrial washing machine repair',
+            'Preventive laundry maintenance',
+            'Parts and components replacement',
+            'Fault diagnosis and performance optimization',
+            'Fryer repair',
+            'Sensor and pilot replacement in kitchens',
+            'Installation and maintenance of gas hoses',
+            'Oven, stove, and industrial griddle repair',
+            'Exhaust fan and air conditioning maintenance and repair'
+        ],
+        clients2: '• Hotels (Miami Downtown, Brickell, Coconut Grove)<br>• Restaurants with industrial kitchens<br>• Hospitals and clinics with internal laundry<br>• Commercial laundries<br>• Residential buildings with shared laundry<br>• Convention centers and gyms with laundry equipment',
+        btn2: 'Go to Laundry & Maintenance',
+        translateBtn: 'ESPAÑOL'
+    }
+};
+
+translateBtn.addEventListener('click', () => {
+    isEnglish = !isEnglish;
+    const lang = isEnglish ? 'en' : 'es';
+
+    document.getElementById('mobileSupport').innerHTML = texts[lang].mobileSupport;
+
+    const service1 = document.getElementById('service1');
+    service1.querySelector('h3').innerText = texts[lang].service1Title;
+    const ul1 = service1.querySelector('ul');
+    ul1.innerHTML = texts[lang].service1List.map(item => `<li>${item}</li>`).join('');
+    document.getElementById('clients1').innerHTML = texts[lang].clients1;
+    document.getElementById('btn1').innerText = texts[lang].btn1;
+
+    const service2 = document.getElementById('service2');
+    service2.querySelector('h3').innerText = texts[lang].service2Title;
+    const ul2 = service2.querySelector('ul');
+    ul2.innerHTML = texts[lang].service2List.map(item => `<li>${item}</li>`).join('');
+    document.getElementById('clients2').innerHTML = texts[lang].clients2;
+    document.getElementById('btn2').innerText = texts[lang].btn2;
+
+    translateBtn.innerText = texts[lang].translateBtn;
+});
+</script>
+<script>
+// Evitar selección de texto
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
+
+// Evitar clic derecho
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Evitar copiar con Ctrl+C, Ctrl+X, Ctrl+S
+document.addEventListener('keydown', function(e) {
+    // Ctrl o Cmd en Mac
+    if ((e.ctrlKey || e.metaKey) && 
+        (e.key === 'c' || e.key === 'x' || e.key === 's')) {
+        e.preventDefault();
+        alert('La copia de contenido está deshabilitada en esta página.');
+    }
+});
+</script>
+
+</body>
+</html>
