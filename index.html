@@ -41,34 +41,38 @@ body::before {
 /* Contenedor principal */
 .main-container {
     background: rgba(255,255,255,0.95);
-    padding:40px;
+    padding: 20px 20px 40px 20px;
     max-width:900px;
-    width:95%;
+    width:90%;
     border-radius:15px;
     box-shadow:0 15px 40px rgba(0,0,0,0.2);
     text-align:center;
     position: relative;
     z-index: 2;
+    overflow: hidden;
 }
 
 /* Logo */
 .logo {
-    font-size:2.5rem;
+    font-size:2rem;
     color:#111;
     margin-bottom:10px;
 }
 .logo span {
     color:#C20B0B;
+    display:block;
+    font-size:1.5rem;
+    margin-top:5px;
 }
 
 /* Frase soporte móvil */
 .mobile-support {
-    font-size:2.5rem;
+    font-size:1.8rem;
     font-weight:900;
     text-align:center;
     color:#fff;
-    margin:20px 0 40px 0;
-    letter-spacing:2px;
+    margin:15px 0 25px 0;
+    letter-spacing:1px;
     animation: glow 1.5s ease-in-out infinite alternate;
 }
 .mobile-support .mobile {
@@ -89,27 +93,32 @@ body::before {
 /* Servicios */
 .services {
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap:30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+    justify-items:center;
 }
 
 .service-box {
     border:2px solid #111;
     border-radius:15px;
-    padding:25px;
-    text-align:left;
+    padding:20px;
+    width:100%;
+    max-width:420px;
     background-color: rgba(255,255,255,0.95);
+    text-align:center;
 }
 
 .service-box h3 {
-    text-align:center;
     margin-bottom:15px;
     color:#111;
+    font-size:1.2rem;
 }
 
 .service-box ul {
-    margin-left:20px;
-    margin-bottom:15px;
+    margin:0 auto 15px auto;
+    padding-left: 0;
+    list-style-position: inside;
+    text-align:left;
 }
 
 .service-box li {
@@ -121,18 +130,18 @@ body::before {
     font-size:0.85rem;
     color:#333;
     margin-bottom:15px;
+    text-align:left;
 }
 
 .btn {
-    display:block;
+    display:inline-block;
     text-align:center;
-    padding:12px;
+    padding:10px 15px;
     background:#111;
     color:#FFD700;
     text-decoration:none;
     border-radius:8px;
     transition:0.3s;
-    margin-top:10px;
 }
 
 .btn:hover {
@@ -143,9 +152,9 @@ body::before {
 /* Botón de traducción */
 #translateBtn {
     position: absolute;
-    top: 20px; /* Ajustado para no tapar contenido */
-    right: clamp(10px, 3vw, 20px);
-    padding: clamp(6px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    top:15px; /* Ajustado para no tapar contenido */
+    right:15px;
+    padding:8px 12px;
     background: #C20B0B;
     color: #fff;
     border: none;
@@ -161,40 +170,41 @@ body::before {
 }
 
 /* Ajustes responsivos para móvil */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .logo {
-        font-size: 1.8rem; 
-        text-align: center; 
-        line-height: 1.2; 
+        font-size:1.6rem;
     }
     .logo span {
-        display: block; 
-        font-size: 1.5rem; 
-        margin-top: 4px;
+        font-size:1.3rem;
     }
 
     .mobile-support {
-        font-size: 1.8rem; 
-        margin: 15px 0 30px 0;
+        font-size:1.4rem;
+        margin:10px 0 20px 0;
     }
 
     .services {
-        gap: 20px;
+        grid-template-columns: 1fr;
     }
 
     .service-box {
-        padding: 20px;
+        padding:15px;
+        max-width:100%;
+    }
+
+    .service-box h3 {
+        font-size:1.1rem;
     }
 
     .btn {
-        font-size: 0.9rem;
-        padding: 10px;
+        font-size:0.9rem;
+        padding:8px 12px;
     }
 
     #translateBtn {
-        top: 10px; /* subir un poquito más arriba en móvil */
-        right: 10px;
-        padding: 6px 12px;
+        top:10px;
+        right:10px;
+        padding:6px 10px;
     }
 }
 </style>
@@ -218,7 +228,6 @@ body::before {
         <!-- SERVICIO MECÁNICA Y CAMIONES -->
         <div class="service-box" id="service1">
             <h3>Mecánica & Servicios para Camiones y Equipos Hidráulicos</h3>
-
             <ul>
                 <li>Mecánica general de camiones</li>
                 <li>Instalación y reemplazo de terminales hidráulicos</li>
@@ -231,7 +240,6 @@ body::before {
                 <li>Mantenimiento de compactadoras/prensas de cartón</li>
                 <li>Servicios completos para flotas de camiones</li>
             </ul>
-
             <div class="clients" id="clients1">
                 <strong>Clientes frecuentes:</strong><br>
                 • Hoteles con equipos hidráulicos internos<br>
@@ -241,14 +249,12 @@ body::before {
                 • Flotas comerciales<br>
                 • Centros de construcción e industria ligera
             </div>
-
             <a href="mecanica.html" class="btn" id="btn1">Ir a Mecánica & Camiones</a>
         </div>
 
         <!-- SERVICIO LAUNDRY & HOTELS/RESTAURANTES -->
         <div class="service-box" id="service2">
             <h3>Mantenimiento Laundry & Hoteles / Restaurantes</h3>
-
             <ul>
                 <li>Reparación de secadoras (Dryers) industriales</li>
                 <li>Reparación de lavadoras industriales</li>
@@ -261,7 +267,6 @@ body::before {
                 <li>Reparación de hornos, cocinas y planchas industriales</li>
                 <li>Reparación y mantenimiento de exofán y aire acondicionado</li>
             </ul>
-
             <div class="clients" id="clients2">
                 <strong>Clientes frecuentes:</strong><br>
                 • Hoteles (Miami Downtown, Brickell, Coconut Grove)<br>
@@ -271,7 +276,6 @@ body::before {
                 • Edificios residenciales con laundry común<br>
                 • Centros de convenciones y gimnasios con equipos laundry
             </div>
-
             <a href="laundry.html" class="btn" id="btn2">Ir a Laundry & Mantenimiento</a>
         </div>
 
@@ -402,3 +406,4 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
+
